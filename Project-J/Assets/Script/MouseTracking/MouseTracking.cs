@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class MouseTracking : MonoBehaviour
     void Update()
     {
         if (isUpdateMousePosition) UpdateWorldMousePosition();
+        // if (Input.GetMouseButtonDown(0)) Debug.Log(GetClickGameObject(typeof(BoxCollider)).name); //ตัวอย่าง
     }
 
     private void UpdateWorldMousePosition()
@@ -39,5 +41,21 @@ public class MouseTracking : MonoBehaviour
             Vector3 hitPosition = ray.GetPoint(hitDistance);
             mouseFloorPosition = hitPosition;
         }
+    }
+
+    public GameObject GetClickGameObject(Type type = null)
+    {
+        Vector3 mouseUiPos = Input.mousePosition;
+        Ray ray = Camera.main.ScreenPointToRay(mouseUiPos);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (type != null)
+            {
+                return hit.collider.gameObject.GetComponent(type) ? hit.collider.gameObject : null;
+            }
+            else return hit.collider.gameObject;
+        }
+        return null;
     }
 }
