@@ -27,9 +27,21 @@ public class TestDistanceCalulator : MonoBehaviour
         {
             IndicatorManager.instance.showRangeIndicator(selfGameObject, 5);
         }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            IndicatorManager.instance.showAOEIndicator(selfGameObject, 10, 5);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            IndicatorManager.instance.showAOEIndicator(selfGameObject, 15, 3);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            IndicatorManager.instance.showShotIndicator(selfGameObject, 10, 3);
+        }
         if (Input.GetKeyDown(KeyCode.I))
         {
-            IndicatorManager.instance.hideRangeIndicator();
+            IndicatorManager.instance.hideIndicator();
         }
     }
 }
