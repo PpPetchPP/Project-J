@@ -7,9 +7,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private CameraMovementController cameraMovement;
     [SerializeField] private MouseTracking mouseTracking;
     [SerializeField] private CharacterMovement characterMovement;
+    public float remainMoveDistance;
 
     void Start()
     {
+        characterMovement.Initialize(this);
         cameraMovement.FreeMove().Forget();
     }
 
